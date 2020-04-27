@@ -1,0 +1,15 @@
+/* Hidden Cat in the Page Title */
+.page_title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.page_title .image_position { 
+    position: relative;
+}
+
+.page_title:hover .hidden_kitten { 
+    visibility: visible;
+}

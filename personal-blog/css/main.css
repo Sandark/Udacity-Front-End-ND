@@ -2,24 +2,33 @@
 @import "./blogpost_preview.css";
 @import "./galery.css";
 @import "./blogpost_full.css";
+@import "./title.css";
 
 body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 h1 {
-    font-size: 40px;
+    font-size: 2.25em;
     text-transform: uppercase;
 }
 
 h2 {
-    font-size: 30px;
+    font-size: 2em;
     text-transform: uppercase;
     color: #ba3925;
 }
 
 h3 {
-    font-size: 24px;
+    font-size: 1.75em;
+}
+
+h4 {
+    font-size: 1.5em;
+}
+
+h5, h6 {
+    font-size: 1em;
 }
 
 p {
@@ -28,13 +37,6 @@ p {
 
 a {
     color: #2156a5;
-}
-
-.page_title {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
 }
 
 .middle_panel {
@@ -97,14 +99,6 @@ a {
     z-index:99; 
     left: -40px;
     top: -20px;
-}
-
-.page_title .image_position { 
-    position: relative;
-}
-
-.page_title:hover .hidden_kitten { 
-    visibility: visible;
 }
 
 /* For debugging purposes border might be added to all elements of a page */

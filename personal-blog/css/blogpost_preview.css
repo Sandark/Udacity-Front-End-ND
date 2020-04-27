@@ -1,8 +1,25 @@
 /* Blogpost short styling */
+#blogpost_list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+@media(min-width:800px) {
+    #blogpost_list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: stretch;
+    }
+}
+
 .blogpost_preview {
     border-top: 1px solid #efefed;
     display: flex;
     padding: 10px;
+    flex: 1 1 380px;
 }
 
 .blogpost_preview:hover {
