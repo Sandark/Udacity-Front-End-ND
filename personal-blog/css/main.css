@@ -10,8 +10,8 @@ h1 {
     text-transform: uppercase;
 }
 
-h3 {
-    font-size: 24px;
+h2 {
+    font-size: 30px;
     text-transform: uppercase;
     color: #ba3925;
 }
@@ -24,7 +24,7 @@ a {
     color: #2156a5;
 }
 
-.flexible {
+.page_title {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -80,7 +80,7 @@ a {
 }
 
 .menu_item {
-    font-size: 24px;
+    font-size: 20px;
     margin: 5px;
     text-transform: uppercase;
 }
@@ -105,6 +105,22 @@ a {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.image_position .hidden_kitten { 
+    position: absolute;
+    visibility: hidden;    
+    z-index:99; 
+    left: -40px;
+    top: -20px;
+}
+
+.page_title .image_position { 
+    position: relative;
+}
+
+.page_title:hover .hidden_kitten { 
+    visibility: visible;
 }
 
 /* For debugging purposes border might be added to all elements of a page */
