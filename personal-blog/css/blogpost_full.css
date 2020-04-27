@@ -130,6 +130,7 @@
     height: 80px;
     object-fit: cover;
     scale: 80%;
+    border-radius: 100%;
 }
 
 .blogpost_author_bio {
