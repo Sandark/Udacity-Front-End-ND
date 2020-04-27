@@ -17,6 +17,8 @@ h2 {
     font-size: 2em;
     text-transform: uppercase;
     color: #ba3925;
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
 }
 
 h3 {
@@ -41,7 +43,7 @@ a {
 
 .middle_panel {
     min-width: 400px;
-    max-width: 800px;
+    max-width: 900px;
     margin: auto;
 }
 
@@ -84,12 +86,13 @@ a {
     grid-area: ft;
     font-size: 12px;
     color: #9a9a9a;
+    text-align: center;
 }
 
 .box {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
 }
 

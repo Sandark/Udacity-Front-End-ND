@@ -6,7 +6,7 @@
     margin: 5px;
     gap:5px 5px;
     align-content: space-between;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .croped {
@@ -18,13 +18,12 @@
 @media(min-width: 600px) and (max-width: 800px) {
     .galery {
         display: grid;
-        grid-template-columns: repeat(3, 33%);
+        grid-template-columns: repeat(3, 180px);
         grid-auto-rows: minmax(100px, 180px);
         width: inherit;
         margin: 5px;
         gap:10px 10px;
         align-content: space-between;
-        justify-content: space-between;
     }
 
 }
@@ -32,12 +31,11 @@
 @media(min-width:801px) {
     .galery {
         display: grid;
-        grid-template-columns: repeat(4, 25%);
+        grid-template-columns: repeat(4, 180px);
         grid-auto-rows: minmax(100px, 180px);
         width: inherit;
         margin: 5px;
         gap:10px 10px;
         align-content: space-between;
-        justify-content: space-between;
     }
 }
