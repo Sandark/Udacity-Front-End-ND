@@ -1,0 +1,23 @@
+/* Blogpost short styling */
+.blogpost_preview {
+    border-top: 1px solid #efefed;
+    display: flex;
+    padding: 10px;
+}
+
+.blogpost_preview:hover {
+    box-shadow: 2px 2px 20px 0px #efefed, -2px 2px 20px 0px #efefed;
+}
+
+.blogpost_preview_title {
+    text-transform: capitalize;
+}
+
+.blogpost_preview_footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.blogpost_preview_date {
+    color: #9a9a9a;
+}

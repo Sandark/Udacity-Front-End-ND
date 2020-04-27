@@ -1,9 +1,7 @@
-@import "./main.css";
-
 .galery {
     display: grid;
     grid-template-columns: repeat(2, 180px);
-    grid-auto-rows: minmax(100px, 200px);
+    grid-auto-rows: minmax(100px, 180px);
     width: inherit;
     margin: 5px;
     gap:5px 5px;
@@ -13,7 +11,7 @@
 
 .croped {
     width: 180px;
-    height: 200px;
+    height: 180px;
     object-fit: cover;
 }
 
@@ -21,20 +19,21 @@
     .galery {
         display: grid;
         grid-template-columns: repeat(3, 33%);
-        grid-auto-rows: minmax(100px, 200px);
+        grid-auto-rows: minmax(100px, 180px);
         width: inherit;
         margin: 5px;
         gap:10px 10px;
         align-content: space-between;
         justify-content: space-between;
     }
+
 }
 
 @media(min-width:801px) {
     .galery {
         display: grid;
         grid-template-columns: repeat(4, 25%);
-        grid-auto-rows: minmax(100px, 200px);
+        grid-auto-rows: minmax(100px, 180px);
         width: inherit;
         margin: 5px;
         gap:10px 10px;
