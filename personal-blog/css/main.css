@@ -93,14 +93,6 @@ a {
     justify-content: center;
 }
 
-.image_position .hidden_kitten { 
-    position: absolute;
-    visibility: hidden;    
-    z-index:99; 
-    left: -40px;
-    top: -20px;
-}
-
 /* For debugging purposes border might be added to all elements of a page */
 /* * {
     border: 1px solid red !important;

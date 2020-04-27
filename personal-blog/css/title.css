@@ -10,6 +10,19 @@
     position: relative;
 }
 
+.hidden_kitten {
+    width: 2.25em;
+    height: 2.25em;
+}
+
 .page_title:hover .hidden_kitten { 
     visibility: visible;
+}
+
+.image_position .hidden_kitten { 
+    position: absolute;
+    visibility: hidden;    
+    z-index:99; 
+    left: -40px;
+    top: -20px;
 }
