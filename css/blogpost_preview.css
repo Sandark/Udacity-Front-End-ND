@@ -6,7 +6,7 @@
     justify-content: space-between;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 800px) and (max-resolution: 120dpi) {
     #blogpost_list {
         display: flex;
         flex-direction: row;
