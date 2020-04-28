@@ -55,19 +55,13 @@
     height: 300px;
 }
 
-.blogpost_content_with_image {
-    display: flex;
-}
-
-.blogpost_content_with_image .right_text {
-    margin-top: 0;
-    margin-bottom: 0;
+.right_aligned {
+    float: right;
     margin-left: 1em;
 }
 
-.blogpost_content_with_image .left_text {
-    margin-top: 0;
-    margin-bottom: 0;
+.left_aligned {
+    float: left;
     margin-right: 1em;
 }
 
