@@ -1,0 +1,102 @@
+/* importing another css files */
+@import "./blogpost_preview.css";
+@import "./galery.css";
+@import "./blogpost_full.css";
+@import "./title.css";
+
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    font-size: 2.25em;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 2em;
+    text-transform: uppercase;
+    color: #ba3925;
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+}
+
+h3 {
+    font-size: 1.75em;
+}
+
+h4 {
+    font-size: 1.5em;
+}
+
+h5, h6 {
+    font-size: 1em;
+}
+
+p {
+    font-size: 18px;
+}
+
+a {
+    color: #2156a5;
+}
+
+.middle_panel {
+    min-width: 400px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "mn"
+    "ct"
+    "ft";
+    row-gap: 10px;
+    justify-content: center;
+}
+
+#menu {
+    grid-area: mn;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin: auto;
+}
+
+.menu_item {
+    font-size: 20px;
+    margin: 5px;
+    text-transform: uppercase;
+    padding: 5px;
+}
+
+.menu_item:hover {
+    box-shadow: 2px 2px 20px 0px #efefed, -2px 2px 20px 0px #efefed;
+}
+
+#content {
+    grid-area: ct;
+    min-height: 600px;
+}
+
+#footer {
+    grid-area: ft;
+    font-size: 12px;
+    color: #9a9a9a;
+    text-align: center;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+}
+
+/* For debugging purposes border might be added to all elements of a page */
+/* * {
+    border: 1px solid red !important;
+} */
