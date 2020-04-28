@@ -6,7 +6,7 @@
     justify-content: center;
 }
 
-.page_title .image_position { 
+.page_title .image_position {
     position: relative;
 }
 
@@ -15,14 +15,14 @@
     height: 2.25em;
 }
 
-.page_title:hover .hidden_kitten { 
+.page_title:hover .hidden_kitten {
     visibility: visible;
 }
 
-.image_position .hidden_kitten { 
+.image_position .hidden_kitten {
     position: absolute;
-    visibility: hidden;    
-    z-index:99; 
+    visibility: hidden;
+    z-index: 99;
     left: -40px;
     top: -20px;
 }
