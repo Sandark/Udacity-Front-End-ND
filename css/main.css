@@ -78,12 +78,7 @@ a {
 }
 
 .menu_item:hover {
-    box-shadow: 2px 2px 20px 0px #efefed, -2px 2px 20px 0px #efefed;
-}
-
-#content {
-    grid-area: ct;
-    min-height: 600px;
+    box-shadow: 2px 2px 20px 0 #efefed, -2px 2px 20px 0 #efefed;
 }
 
 #footer {
