@@ -4,7 +4,7 @@ body {
     margin: 0;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: #fff;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 h1 {
@@ -17,9 +17,9 @@ a {
     color: #24b6f6;
 }
 
-@media (min-resolution: 120dpi) {
+@media (min-width: 800px) {
     body {
-        font-size: 20px;
+        font-size: 16px;
     }
 }
 
@@ -50,14 +50,6 @@ a {
     outline: none;
 }
 
-#navbar_list li {
-    border-right: 1px solid #f3f5f6;
-}
-
-#navbar_list li:last-child {
-    border-right: none;
-}
-
 #navbar_list a {
     padding: 0.25em 0.5em 0.25em 0.5em;
     text-align: center;
@@ -66,39 +58,27 @@ a {
     display: inline-block;
 }
 
-@media screen and (max-width: 620px) {
-    #navbar_list li {
-        float: none;
-    }
-
-    #navbar_list li {
-        border-bottom: 1px solid #f3f5f6;
-        border-right: none;
-    }
-
-    #navbar_list li:last-child {
-        border-bottom: none;
-    }
-
-    #navbar_list a {
-        display: block;
-    }
-}
-
 /* ---- Content styling ---- */
 .content {
-    margin: 3em auto 0 auto;
+    margin: 50px auto 20px auto;
     max-width: 1200px;
     min-width: 600px;
 }
 
 .section_container {
-    max-width: inherit;
     height: auto;
     position: relative;
     overflow: hidden;
-    margin: 10px 20px 10px 20px;
+    margin: 0 20px 10px 20px;
     outline: none;
+    background: none;
+}
+
+.section_container:before {
+    content: "";
+    display: block;
+    height: 5em; /* fixed header height*/
+    margin: -5em 0 0; /* negative fixed header height */
 }
 
 .section_container img {
@@ -134,4 +114,12 @@ a {
     color: #f3f5f6;
     background-color: rgba(0, 0, 0, 0.3);
     padding: 0.3em;
+}
+
+.page_footer {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.7em;
+    color: #044f68;
+    height: 60px;
 }
