@@ -1,0 +1,137 @@
+/* ---- Base Rules ---- */
+body {
+    background: #f3f5f6;
+    margin: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #fff;
+    font-size: 16px;
+}
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    color: #044f68;
+}
+
+a {
+    color: #24b6f6;
+}
+
+@media (min-resolution: 120dpi) {
+    body {
+        font-size: 20px;
+    }
+}
+
+/* ---- Navigation bar styling ---- */
+
+#navbar_list {
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#navbar_list li {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    background-color: #333;
+}
+
+#navbar_list a:hover, #navbar_list a:focus {
+    background-color: #111111 !important;
+    outline: none;
+}
+
+#navbar_list li {
+    border-right: 1px solid #f3f5f6;
+}
+
+#navbar_list li:last-child {
+    border-right: none;
+}
+
+#navbar_list a {
+    padding: 0.25em 0.5em 0.25em 0.5em;
+    text-align: center;
+    text-decoration: none;
+    color: #f3f5f6;
+    display: inline-block;
+}
+
+@media screen and (max-width: 620px) {
+    #navbar_list li {
+        float: none;
+    }
+
+    #navbar_list li {
+        border-bottom: 1px solid #f3f5f6;
+        border-right: none;
+    }
+
+    #navbar_list li:last-child {
+        border-bottom: none;
+    }
+
+    #navbar_list a {
+        display: block;
+    }
+}
+
+/* ---- Content styling ---- */
+.content {
+    margin: 3em auto 0 auto;
+    max-width: 1200px;
+    min-width: 600px;
+}
+
+.section_container {
+    max-width: inherit;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    margin: 10px 20px 10px 20px;
+    outline: none;
+}
+
+.section_container img {
+    object-fit: contain;
+    width: 100%;
+    height: auto;
+    float: left;
+}
+
+.section_information {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 2em;
+    width: auto;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(14, 14, 14, 0) 100%);
+}
+
+.section_information h2 {
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.section_information p {
+    margin: 0;
+}
+
+.section_copyright {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: #f3f5f6;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 0.3em;
+}
