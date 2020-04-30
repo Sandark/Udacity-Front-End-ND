@@ -82,7 +82,7 @@ let removeActiveStyle = (section) => {
 let isFullyVisible = (element) => {
     let boundingClientRect = element.getBoundingClientRect();
 
-    return boundingClientRect.y > visibilityGap;
+    return boundingClientRect.y > visibilityGap && boundingClientRect.y < window.innerHeight - visibilityGap;
 };
 
 let isLastFullyVisible = (element) => {
