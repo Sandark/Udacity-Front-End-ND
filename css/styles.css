@@ -20,15 +20,18 @@ a {
 
 /* ---- Navigation bar styling ---- */
 
+.page_header {
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
 #navbar_list {
     list-style-type: none;
     padding: 0;
     overflow: hidden;
     background-color: #333;
-    position: fixed;
-    top: 0;
     width: 100%;
-    z-index: 99;
     margin: 0 auto;
     text-align: center;
     font-size: 2em;
@@ -56,7 +59,7 @@ a {
 
 /* ---- Content styling ---- */
 .content {
-    margin: 50px auto 20px auto;
+    margin: 0 auto;
     max-width: 1200px;
     min-width: 600px;
 }
@@ -108,7 +111,7 @@ a {
 }
 
 .section_information p {
-    margin: 0;
+    margin-top: 0.5em;
 }
 
 .section_copyright {

@@ -1,12 +1,21 @@
 /* Define Global Variables */
 const navigationBar = document.querySelector("#navbar_list");
 const existingSections = document.querySelectorAll("section");
+const mainContent = document.querySelector("main");
 const navigationSectionMap = new Map();
 
 const visibilityGap = 50;
 
 
 /* Build navigation bar */
+/* Prevents default behaviour for a element and allows smooth scroll to target */
+let scrollToSection = function (event) {
+    event.preventDefault();
+
+    let href = event.target.hash;
+    document.querySelector(href).scrollIntoView({behavior: 'smooth', block: 'center'});
+};
+
 let temporaryFragment = document.createDocumentFragment();
 existingSections.forEach((e) => {
     let newNavigationElement = document.createElement("li");
@@ -15,13 +24,7 @@ existingSections.forEach((e) => {
     newNavigationLink.setAttribute("href", "#" + e.id);
     newNavigationLink.textContent = e.getAttribute("data-nav");
 
-    /* Prevents default behaviour for a element and allows smooth scroll to target */
-    newNavigationLink.onclick = (event) => {
-        event.preventDefault();
-
-        let href = event.target.hash;
-        document.querySelector(href).scrollIntoView({behavior: 'smooth', block: 'center'});
-    };
+    newNavigationLink.onclick = scrollToSection;
 
     newNavigationElement.appendChild(newNavigationLink);
     temporaryFragment.appendChild(newNavigationElement);
@@ -39,7 +42,7 @@ navigationBar.appendChild(temporaryFragment);
 *
 * Once active element is found - apply active style and remove style from others */
 let evaluateActiveSection = () => {
-    let sections = document.getElementsByTagName("section");
+    let sections = existingSections;
     let fullyVisibleSection;
 
     if (isFullyVisible(sections[0])) {
@@ -91,4 +94,5 @@ let isLastFullyVisible = (element) => {
     return boundingClientRect.y > visibilityGap && window.innerHeight - visibilityGap > boundingClientRect.bottom;
 }
 
+/* Re-evaluate active element on scroll */
 window.onscroll = evaluateActiveSection;
