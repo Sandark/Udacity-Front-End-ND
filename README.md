@@ -9,3 +9,6 @@ The landing page shows different locomotives used on german railways with a shor
 * HTML/CSS layout supports different types of devices and adjusts to screen dimensions and resolutions
 * All sections are collapsible - when clicking on the header it will be collapsed to include only text content of a section
 * Click To Top button appears when user scroll page a bit and disappears if scroll reached the top of the page
+
+## Github pages
+Site is hosted on GH pages and can be found here - https://sandark.github.io/Udacity-Front-End-ND/ 
