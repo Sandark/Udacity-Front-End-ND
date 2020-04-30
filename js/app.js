@@ -70,7 +70,7 @@ let evaluateActiveSection = () => {
 };
 
 let applyActiveStyle = (section) => {
-    section.style.cssText = "box-shadow: 0 2px 10px #044f68;"
+    section.style.cssText = "box-shadow: 0 2px 10px #044f68; border: 1px solid #f00"
     navigationSectionMap.get(section).style.background = "#848484";
 
 }

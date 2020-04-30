@@ -81,7 +81,7 @@ a {
 }
 
 .section_container img {
-    object-fit: contain;
+    object-fit: cover;
     width: 100%;
     height: auto;
     float: left;
@@ -147,8 +147,7 @@ a {
     }
 
     .section_container img {
-        width: auto;
-        height: inherit;
-        object-fit: cover;
+        min-width: 100%;
+        min-height: 100%;
     }
 }
