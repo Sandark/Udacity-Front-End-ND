@@ -6,11 +6,13 @@ const navigationSectionMap = new Map();
 const activeClass = "active";
 const activeNavClass = "active_nav";
 
+const toTopButton = document.getElementById("to-top");
+
 const visibilityGap = 50;
 
 
 /* Build navigation bar */
-/* Prevents default behaviour for a element and allows smooth scroll to target */
+/* Prevents default behaviour for 'a' element and allows smooth scroll to target */
 let scrollToSection = function (event) {
     event.preventDefault();
 
@@ -18,6 +20,7 @@ let scrollToSection = function (event) {
     document.querySelector(href).scrollIntoView({behavior: 'smooth', block: 'center'});
 };
 
+/* Using temporary fragment build navigation bar and effectively inject into bar after it's built */
 let temporaryFragment = document.createDocumentFragment();
 existingSections.forEach((e) => {
     let newNavigationElement = document.createElement("li");
@@ -47,13 +50,13 @@ let evaluateActiveSection = () => {
     let sections = existingSections;
     let fullyVisibleSection;
 
-    if (isFullyVisible(sections[0])) {
+    if (isVisible(sections[0])) {
         fullyVisibleSection = sections[0];
     } else if (isLastFullyVisible(sections[sections.length - 1])) {
         fullyVisibleSection = sections[sections.length - 1];
     } else {
         for (let i = 0; i < sections.length; i++) {
-            if (isFullyVisible(sections[i])) {
+            if (isVisible(sections[i])) {
                 fullyVisibleSection = sections[i];
                 break;
             }
@@ -75,35 +78,34 @@ let applyActiveStyle = (section) => {
     section.classList.add(activeClass);
     navigationSectionMap.get(section).classList.add(activeNavClass);
 
-}
+};
 
 let removeActiveStyle = (section) => {
     if (section.classList.contains(activeClass)) {
         section.classList.remove(activeClass)
         navigationSectionMap.get(section).classList.remove(activeNavClass);
     }
-}
+};
 
-let isFullyVisible = (element) => {
+/* Element is considered to be visible if it's top part above middle line
+    of the screen and bottom is below the middle line of viewport */
+let isVisible = (element) => {
     let boundingClientRect = element.getBoundingClientRect();
 
-    return boundingClientRect.y > visibilityGap && boundingClientRect.y < window.innerHeight - visibilityGap;
+    return boundingClientRect.y < window.innerHeight / 2 - visibilityGap
+        && boundingClientRect.bottom > window.innerHeight / 2 + visibilityGap;
 };
 
 let isLastFullyVisible = (element) => {
     let boundingClientRect = element.getBoundingClientRect();
 
     return boundingClientRect.y > visibilityGap && window.innerHeight - visibilityGap > boundingClientRect.bottom;
-}
+};
 
-/* Re-evaluate active element on scroll */
+/* Re-evaluate active element on loading */
 window.addEventListener("DOMContentLoaded", evaluateActiveSection);
 
-/* Scroll to top button */
-//Get the button:
-const toTopButton = document.getElementById("to-top");
-
-/* Show button if user scrolled at least 20px, otherwise hide */
+/* Show scroll toTop button if user scrolled at least 20px, otherwise hide */
 let showToTopButton = () => {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
         toTopButton.style.display = "block";
@@ -114,14 +116,16 @@ let showToTopButton = () => {
 
 toTopButton.onclick = () => {
     document.body.scrollIntoView({behavior: 'smooth', block: 'start'});
-}
+};
 
 window.onscroll = () => {
     evaluateActiveSection();
     showToTopButton();
 }
 
-/* Collapsible section */
+/* Collapsible section, we apply listener to all section_information classes and during event
+* change max-height of parent to correspond the height of section_information.
+*  We call event at Capture phase to make sure it will be used on section_information. */
 const sectionInformation = document.querySelectorAll(".section_information");
 
 sectionInformation.forEach((e) => {
@@ -137,4 +141,4 @@ sectionInformation.forEach((e) => {
     }
 
     e.addEventListener("click", collapsingFunction, true);
-})
+});
