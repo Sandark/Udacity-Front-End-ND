@@ -1,8 +1,10 @@
 /* Define Global Variables */
 const navigationBar = document.querySelector("#navbar_list");
 const existingSections = document.querySelectorAll("section");
-const mainContent = document.querySelector("main");
 const navigationSectionMap = new Map();
+
+const activeClass = "active";
+const activeNavClass = "active_nav";
 
 const visibilityGap = 50;
 
@@ -70,15 +72,15 @@ let evaluateActiveSection = () => {
 };
 
 let applyActiveStyle = (section) => {
-    section.style.cssText = "box-shadow: 0 2px 10px #044f68; border: 1px solid #f00"
-    navigationSectionMap.get(section).style.background = "#848484";
+    section.classList.add(activeClass);
+    navigationSectionMap.get(section).classList.add(activeNavClass);
 
 }
 
 let removeActiveStyle = (section) => {
-    if (section.style.cssText.match("box-shadow")) {
-        section.style.cssText = ""
-        navigationSectionMap.get(section).style.background = "";
+    if (section.classList.contains(activeClass)) {
+        section.classList.remove(activeClass)
+        navigationSectionMap.get(section).classList.remove(activeNavClass);
     }
 }
 
@@ -95,4 +97,44 @@ let isLastFullyVisible = (element) => {
 }
 
 /* Re-evaluate active element on scroll */
-window.onscroll = evaluateActiveSection;
+window.addEventListener("DOMContentLoaded", evaluateActiveSection);
+
+/* Scroll to top button */
+//Get the button:
+const toTopButton = document.getElementById("to-top");
+
+/* Show button if user scrolled at least 20px, otherwise hide */
+let showToTopButton = () => {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        toTopButton.style.display = "block";
+    } else {
+        toTopButton.style.display = "none";
+    }
+};
+
+toTopButton.onclick = () => {
+    document.body.scrollIntoView({behavior: 'smooth', block: 'start'});
+}
+
+window.onscroll = () => {
+    evaluateActiveSection();
+    showToTopButton();
+}
+
+/* Collapsible section */
+const sectionInformation = document.querySelectorAll(".section_information");
+
+sectionInformation.forEach((e) => {
+    let collapsingFunction = function (event) {
+        let currentTarget = event.currentTarget;
+        let parentElement = currentTarget.parentElement;
+
+        if (parentElement.style.maxHeight) {
+            parentElement.style.maxHeight = null;
+        } else {
+            parentElement.style.maxHeight = currentTarget.offsetHeight + "px";
+        }
+    }
+
+    e.addEventListener("click", collapsingFunction, true);
+})

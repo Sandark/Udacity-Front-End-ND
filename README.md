@@ -1,13 +1,10 @@
 # Landing Page Project
 
-## Table of Contents
+Landing page shows different locomotives used on german railways with a short description.
 
-* [Instructions](#instructions)
-
-## Instructions
-
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
-
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+## Functionality:
+* JavaScript automatically creates navigation menu depending on sections content on page. It's possible to add new section elements and they will be presented in navigation bar
+* JS checks for current active element depending on what is shown on screen. Style is applied to active element as well as selector in navigation bar is updated to show user position on the page
+* Smooth scrolling is implemented - when user clicks on menu item in navigation bar it will be scrolled smoothly to proper section
+* HTML/CSS layout supports different types of devices and adjusts to screen dimensions and resolutions
+* All sections are collapsible - when click on header it will be collapsed to include only text content of section
