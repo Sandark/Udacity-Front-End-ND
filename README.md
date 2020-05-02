@@ -11,3 +11,4 @@ A small web page to get familiar with Node.js, express, and async JS.
 
 ## Additionally
 * Special .gitgnore is created using npx (npx gitignore node)
+* Deployed on heroku:
