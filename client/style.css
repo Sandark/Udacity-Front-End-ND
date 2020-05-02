@@ -71,6 +71,7 @@ input {
     font-size: 1.2em;
     font-weight: bold;
     border: 1px solid transparent;
+    padding: 0 0.5em;
 }
 
 input:focus {
@@ -98,6 +99,7 @@ textarea {
     font-weight: bold;
     border: 1px solid transparent;
     width: 90%;
+    padding: 0 0.5em;
 }
 
 textarea:focus {

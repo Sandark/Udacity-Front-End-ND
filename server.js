@@ -13,9 +13,10 @@ const cors = require("cors");
 
 app.use(cors());
 
-// Load client from specified package
+/* Specify client side */
 app.use(express.static("client"));
 
+/* Specify port from Environment, if not use 8080 */
 const port = process.env.PORT || 8080;
 
 const server = app.listen(port, () => {
@@ -24,6 +25,7 @@ const server = app.listen(port, () => {
 
 let projectData = {};
 
+/* Process new record */
 app.post("/add", (req, res) => {
     projectData = {
         date: getCurrentDate(),
@@ -39,6 +41,7 @@ const getCurrentDate = () => {
     return d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
 }
 
+/* Get recent record */
 app.get("/record", (req, res) => {
     res.json(projectData);
 })
