@@ -43,13 +43,13 @@ const postData = async (url = "", data = {}) => {
     }
 }
 
+/* Compile URL according to documentation of fetch() */
 const compileUrl = function (params) {
     let url = new URL(baseUrl);
 
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]))
     return url;
 }
-
 
 generateButton.addEventListener("click", () => {
     if (isInputValid()) {
@@ -68,20 +68,24 @@ generateButton.addEventListener("click", () => {
                     currentTemperature.textContent = "Sorry, but city could not be found";
                 }
             })
-            .then(value => {
-                if (value === true) {
-                    postData("/add", {
-                        temp: currentTemperature.textContent,
-                        feelings: feelingsField.value
-                    }).then(response => {
-                        recordDate.textContent = response.date;
-                        recordTemp.textContent = response.temp;
-                        recordFeelings.textContent = response.feelings;
-                    });
-                }
+            .then(temperatureRetrieved => {
+                postNewRecordIfTemperatureIsRetrieved(temperatureRetrieved);
             })
     }
 });
+
+function postNewRecordIfTemperatureIsRetrieved(temperatureRetrieved) {
+    if (temperatureRetrieved === true) {
+        postData("/add", {
+            temp: currentTemperature.textContent,
+            feelings: feelingsField.value
+        }).then(response => {
+            recordDate.textContent = response.date;
+            recordTemp.textContent = response.temp;
+            recordFeelings.textContent = response.feelings;
+        });
+    }
+}
 
 function validateFieldContainsData(field) {
     if (field.value.length === 0) {
@@ -93,7 +97,7 @@ function validateFieldContainsData(field) {
     }
 }
 
-const isInputValid = () => {
+function isInputValid() {
     return validateFieldContainsData(zipCodeField) & validateFieldContainsData(feelingsField);
 }
 
