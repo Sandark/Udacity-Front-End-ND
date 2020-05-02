@@ -16,7 +16,7 @@ app.use(cors());
 // Load client from specified package
 app.use(express.static("client"));
 
-const port = 8080;
+const port = process.env.PORT || 8080;
 
 const server = app.listen(port, () => {
     console.log(`Hello! Server is running on port ${port}`)
