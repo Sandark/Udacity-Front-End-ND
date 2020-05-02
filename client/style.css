@@ -1,0 +1,165 @@
+/* General styling */
+body {
+    font-size: 32px;
+    font-family: 'Montserrat', 'Open Sans', sans-serif;
+}
+
+h1 {
+    width: fit-content;
+    width: -moz-fit-content;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Main layout set to flex */
+.main_panel {
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 450px;
+    max-width: 100%;
+    background-color: #ecf6ff;
+    text-align: center;
+    display: grid;
+    flex-direction: column;
+    padding: 2em;
+}
+
+/* Create a gap between children of main panel */
+.content_panel {
+    margin-bottom: 1em;
+}
+
+.content_panel:last-child {
+    margin-bottom: 0;
+}
+
+/* Style input elements */
+button, select {
+    height: 2em;
+    width: 90%;
+    outline: none;
+    background-color: #76ecda;
+    border-radius: 2px;
+    font-family: inherit;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid transparent;
+    -moz-appearance: none;
+}
+
+
+button:active, select:active {
+    background-color: #20e5d0;
+    border: 1px solid #000;
+    color: #fff;
+}
+
+button:hover, select:hover {
+    background-color: #08e8cc;
+    color: #fff;
+}
+
+input {
+    height: 2em;
+    width: 90%;
+    outline: none;
+    background-color: #d7efed;
+    border-radius: 2px;
+    font-family: inherit;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 1px solid transparent;
+}
+
+input:focus {
+    background-color: #20e5d0;
+    border: 1px solid #000;
+    color: #ffffff;
+}
+
+input:focus::placeholder {
+    color: #e8e8e8;
+}
+
+input:hover {
+    background-color: #08e8cc;
+    color: #fff;
+}
+
+textarea {
+    vertical-align: top;
+    outline: none;
+    background-color: #d7efed;
+    border-radius: 2px;
+    font-family: inherit;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 1px solid transparent;
+    width: 90%;
+}
+
+textarea:focus {
+    background-color: #20e5d0;
+    border: 1px solid #000;
+    color: #fff;
+}
+
+textarea:hover {
+    background-color: #08e8cc;
+    color: #fff;
+}
+
+.weather {
+    font-weight: 900;
+    font-size: 4em;
+    margin-top: 1em;
+}
+
+.previous_record {
+    width: 90%;
+    min-height: 2em;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #c2dfff;
+}
+
+.record {
+    padding: 0.2em;
+    margin: 0.2em;
+}
+
+#date {
+    min-width: 4em;
+    width: 10%;
+}
+
+#temp {
+    min-width: 4em;
+    width: 10%;
+}
+
+#content {
+    width: 75%;
+    text-align: left;
+    font-style: italic;
+}
+
+/* Style fields that are not filled with data */
+.error {
+    border: 1px solid #ff0000;
+    box-shadow: 0 0 2px #ff0000;
+}
+
+@media only screen and (max-resolution: 120dpi) {
+    body {
+        font-size: 16px;
+    }
+
+    .main_panel {
+        max-width: 600px;
+    }
+}

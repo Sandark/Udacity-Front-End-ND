@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather journal!</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="main_panel">
+    <h1 class="content_panel">Weather journal!</h1>
+    <div class="content_panel">
+        <input type="text" id="zip" placeholder="Zip Code">
+    </div>
+    <div class="content_panel">
+        <textarea id="feelings" rows="5" placeholder="How do you feel today?"></textarea>
+    </div>
+    <div class="content_panel">
+        <select id="units">
+            <option value="metric" data-sign="C">Celsius</option>
+            <option value="imperial" data-sign="F">Fahrenheit</option>
+            <option value="" data-sign="K">Kelvin</option>
+        </select>
+    </div>
+    <div class="content_panel">
+        <button type="button" id="generate">Generate</button>
+    </div>
+    <div class="content_panel">
+        <div class="weather" id="temp-current">*</div>
+    </div>
+    <div class="content_panel previous_record">
+        <div class="record" id="date"></div>
+        <div class="record" id="temp"></div>
+        <div class="record" id="content"></div>
+    </div>
+</div>
+</body>
+<script src="./app.js"></script>
+</html>
