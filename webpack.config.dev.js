@@ -1,25 +1,43 @@
 const path = require("path");
 const webpack = require("webpack");
-const htmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const {CleanWebpackPlugin} = require("clean-webpack-plugin")
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
-    // Creating entry point for client
     mode: 'development',
     entry: "./src/client/index.js",
     output: {},
     module: {
         rules: [
             {
-                test: "/\.js$/",
+                test: /\.css$/i,
+                exclude: /node_modules/,
+                use: ["style-loader", "css-loader"],
+            },
+            {
+                test: /\.js$/,
                 exclude: /node_modules/,
                 loader: "babel-loader"
             }
         ]
     },
     plugins: [
-        new htmlWebpackPlugin({
+        new HtmlWebpackPlugin({
             template: "./src/client/views/index.html",
             filename: "./index.html"
+        }),
+        new CleanWebpackPlugin({
+            dry: true,
+            verbose: true,
+            cleanStaleWebpackAssets: true,
+            protectWebpackAssets: true
+        }),
+        new BundleAnalyzerPlugin({
+            analyzerMode: "static",
+            statsOptions: {
+                exclude: /node_modules/
+            }
         })
     ],
     optimization: {
