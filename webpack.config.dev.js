@@ -4,6 +4,7 @@ const htmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     // Creating entry point for client
+    mode: 'development',
     entry: "./src/client/index.js",
     output: {},
     module: {
@@ -20,5 +21,8 @@ module.exports = {
             template: "./src/client/views/index.html",
             filename: "./index.html"
         })
-    ]
+    ],
+    optimization: {
+        minimize: false
+    }
 }
