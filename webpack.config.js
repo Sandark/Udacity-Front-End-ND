@@ -1,5 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
+const htmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     // Creating entry point for client
@@ -13,5 +14,11 @@ module.exports = {
                 loader: "babel-loader"
             }
         ]
-    }
+    },
+    plugins: [
+        new htmlWebpackPlugin({
+            template: "./src/client/views/index.html",
+            filename: "./index.html"
+        })
+    ]
 }
