@@ -1,7 +1,3 @@
-export {
-    checkForName
-}
-
 function checkForName(inputText) {
     console.log("::: Running checkForName :::", inputText);
     let names = [
@@ -16,3 +12,7 @@ function checkForName(inputText) {
         alert("Welcome, Captain!")
     }
 }
+
+document.querySelector("#submit-button").addEventListener("click", () => {
+    alert("It's working!");
+})

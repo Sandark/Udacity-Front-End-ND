@@ -1,7 +1,3 @@
-export {
-    handleSubmit
-}
-
 function handleSubmit(event) {
     event.preventDefault()
 

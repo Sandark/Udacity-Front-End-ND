@@ -11,9 +11,9 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css$/i,
+                test: /\.scss$/,
                 exclude: /node_modules/,
-                use: ["style-loader", "css-loader"],
+                use: ["style-loader", "css-loader", "sass-loader"],
             },
             {
                 test: /\.js$/,
@@ -32,13 +32,13 @@ module.exports = {
             verbose: true,
             cleanStaleWebpackAssets: true,
             protectWebpackAssets: true
-        }),
-        new BundleAnalyzerPlugin({
-            analyzerMode: "static",
-            statsOptions: {
-                exclude: /node_modules/
-            }
         })
+        // new BundleAnalyzerPlugin({
+        //     analyzerMode: "static",
+        //     statsOptions: {
+        //         exclude: /node_modules/
+        //     }
+        // })
     ],
     optimization: {
         minimize: false
