@@ -6,13 +6,16 @@ module.exports = {
     // Creating entry point for client
     mode: 'production',
     entry: "./src/client/index.js",
-    output: {},
+    output: {
+        libraryTarget: "var",
+        library: "Client"
+    },
     module: {
         rules: [
             {
                 test: /\.scss$/,
                 exclude: /node_modules/,
-                use: ["style-loader", "css-loader", "sass-loader"],
+                use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
             },
             {
                 test: "/\.js$/",
