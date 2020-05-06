@@ -1,5 +1,5 @@
 $main-font: 'Rubik', sans-serif;
-$main-background: #4c4c4c;
+$main-background: #f7f7f7;
 
 body {
   font-family: $main-font;
@@ -7,6 +7,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   background: $main-background;
+  font-size: 64px;
 }
 
 .container {
@@ -14,4 +15,114 @@ body {
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  width: 100%;
+}
+
+.text_entry {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+
+  #target-text {
+    padding: 1em;
+    margin-top: 1em;
+    border-radius: 1em;
+    border: 1px solid #d3dae0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    font: inherit;
+  }
+
+  label {
+    font-weight: 600;
+    text-align: center;
+  }
+}
+
+.button_panel {
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    margin-top: 1em;
+    height: 2em;
+    padding: 0 1em;
+    background: #00a4eb;
+    border: none;
+    border-radius: 1em;
+    color: #f7f7f7;
+    font-weight: 600;
+    font-size: 0.9em;
+
+    &:hover {
+      background: #0092d2;
+      cursor: pointer;
+    }
+  }
+}
+
+.analysis_result {
+
+  &.visible {
+    background: #f2f4f7;
+    border-top: 1px solid #d3dae0;
+    padding: 1em;
+  }
+
+  .analysis_content {
+    padding: 1em;
+    font-style: italic;
+  }
+}
+
+.loader_spinner {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto;
+
+  &:after {
+    content: " ";
+    display: block;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 8px solid;
+    border-color: #00a4eb transparent #00a4eb transparent;
+    animation: loader_spinner_anim 1.2s linear infinite;
+  }
+
+  @keyframes loader_spinner_anim {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+
+@media(max-resolution: 120dpi) {
+  body {
+    font-size: 16px;
+  }
+
+  .container {
+    width: 80%;
+    max-width: 700px;
+  }
+
+  .loader_spinner {
+    width: 28px;
+    height: 28px;
+
+    &:after {
+      width: 20px;
+      height: 20px;
+      border: 4px solid;
+      border-color: #00a4eb transparent #00a4eb transparent;
+    }
+  }
 }
