@@ -24,8 +24,20 @@ app.get("/", (req, res) => {
     res.sendFile("dist/index.html")
 });
 
-app.post("/analyse", (req, res) => {
+app.post("/analyse_sentiment", (req, res) => {
     const text = req.body.text;
 
-    textAnalyzer.sentimentAnalysis(text, (analysisResult) => res.json(analysisResult));
+    textAnalyzer.sentimentAnalysis(text, (results) => {
+        res.json(results)
+    });
+
+});
+
+app.post("/analyse_entities", (req, res) => {
+    const text = req.body.text;
+
+    textAnalyzer.entitiesAnalysis(text, (results) => {
+        res.json(results)
+    });
+
 });

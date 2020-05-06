@@ -24,3 +24,27 @@ exports.sentimentAnalysis = function (text, callback) {
         callback(res);
     });
 }
+
+exports.entitiesAnalysis = function (text, callback) {
+    textapi.entities({
+        text: text
+    }, function (error, response) {
+        let res = {};
+        if (error === null) {
+            const entities = response.entities;
+
+            Object.keys(entities)
+                .forEach(key => {
+                    res[key] = response.entities[key].join(", ");
+                })
+
+        } else {
+            res = {
+                error: error.toString()
+            }
+        }
+
+        callback(res);
+    });
+
+}

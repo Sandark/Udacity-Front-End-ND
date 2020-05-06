@@ -30,9 +30,7 @@ function showLoadingSpinner() {
     analysisResult.appendChild(loader);
 }
 
-function createAnalysisContent(res) {
-    analysisContent.innerHTML = "";
-
+function adjustAnalysisContent(res) {
     const tempFragment = document.createDocumentFragment();
 
     Object.keys(res).forEach(key => {
@@ -59,15 +57,22 @@ function createAnalysisContent(res) {
 }
 
 submitText.addEventListener("click", evt => {
+    analysisContent.innerHTML = "";
     analysisResult.classList.add("visible");
     showLoadingSpinner();
 
-    postRequest("/analyse", {text: textField.value})
+    postRequest("/analyse_sentiment", {text: textField.value})
         .then(res => {
-            let analysisContent = createAnalysisContent(res);
+            let analysisContent = adjustAnalysisContent(res);
 
-            analysisResult.removeChild(loader);
             analysisResult.appendChild(analysisContent);
+        })
+        .then(() => {
+            postRequest("/analyse_entities", {text: textField.value})
+                .then(res => {
+                    let analysisContent = adjustAnalysisContent(res);
+                    analysisResult.removeChild(loader);
+                })
         })
 })
 
