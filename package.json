@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "clean": "rimraf ./dist && mkdir dist",
     "start": "node src/server/server.js",
     "build-dev": "webpack --config webpack.config.dev.js",
     "build-dev-server": "webpack-dev-server --config webpack.config.dev.js --open",
-    "build-prod": "webpack --config webpack.config.prod.js"
+    "build-prod": "webpack --config webpack.config.prod.js",
+    "heroku-postbuild": "npm run clean && npm run build-prod && npm run start"
   },
   "keywords": [],
   "author": "Anton Verchenko <anton.verch@gmail.com> (https://github.com/Sandark)",
