@@ -26,6 +26,7 @@ app.get("/", (req, res) => {
 
 app.post("/analyse_sentiment", (req, res) => {
     const text = req.body.text;
+    const url = req.body.url;
 
     textAnalyzer.sentimentAnalysis(text, (results) => {
         res.json(results)
@@ -35,8 +36,18 @@ app.post("/analyse_sentiment", (req, res) => {
 
 app.post("/analyse_entities", (req, res) => {
     const text = req.body.text;
+    const url = req.body.url;
 
     textAnalyzer.entitiesAnalysis(text, (results) => {
+        res.json(results)
+    });
+});
+
+app.post("/analyse_combined", (req, res) => {
+    const text = req.body.text;
+    const url = req.body.url;
+
+    textAnalyzer.combinedAnalysis(text, (results) => {
         res.json(results)
     });
 

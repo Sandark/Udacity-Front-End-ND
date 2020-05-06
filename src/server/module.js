@@ -4,10 +4,46 @@ let textapi = new AYLIENTextAPI({
     application_key: process.env.API_KEY
 });
 
+exports.combinedAnalysis = function(text, callback) {
+    textapi.combined({
+        text: text,
+        endpoint: ["entities", "classify", "sentiment"]
+    }, function(err, result) {
+        let res = {};
+        if (err === null) {
+            result.results.forEach(r => {
 
+                if (r.endpoint === "entities") {
+                    const entities = r.result.entities;
+                    Object.keys(entities)
+                        .forEach(key => {
+                            res[key] = entities[key].join(", ");
+                        })
+                } else if (r.endpoint === "classify") {
+                    const categories = r.result.categories;
+
+                    Object.keys(categories)
+                        .forEach(key => {
+                            res[key] = categories[key].join(", ");
+                        })
+                } else {
+                    res["polarity"] = r.result.polarity;
+                    res["subjectivity"] = r.result.subjectivity;
+                }
+            });
+        } else {
+            res = {
+                error: error.toString()
+            }
+        }
+
+        callback(res);
+    });
+
+}
 exports.sentimentAnalysis = function (text, callback) {
     textapi.sentiment({
-        'text': text
+        text: text
     }, function (error, response) {
         let res = {};
         if (error === null) {
@@ -35,7 +71,7 @@ exports.entitiesAnalysis = function (text, callback) {
 
             Object.keys(entities)
                 .forEach(key => {
-                    res[key] = response.entities[key].join(", ");
+                    res[key] = entities[key].join(", ");
                 })
 
         } else {

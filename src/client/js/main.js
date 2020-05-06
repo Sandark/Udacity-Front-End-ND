@@ -1,5 +1,7 @@
+/* Elements declaration */
 const textField = document.querySelector("#target-text");
 const submitText = document.querySelector("#submit-text");
+const combinedSubmitText = document.querySelector("#combined-submit-text");
 const analysisResult = document.querySelector(".analysis_result");
 const clearText = document.querySelector("#clear-text");
 
@@ -9,21 +11,6 @@ loader.classList.add("loader_spinner");
 const analysisContent = document.createElement("div");
 analysisContent.classList.add("analysis_content");
 
-const postRequest = async function (url, load) {
-
-    const response = await fetch(url, {
-        method: "POST",
-        mode: "cors",
-        cache: "no-cache",
-        credentials: "same-origin",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(load)
-    });
-
-    return await response.json();
-}
 
 function showLoadingSpinner() {
     analysisResult.innerHTML = "";
@@ -61,14 +48,14 @@ submitText.addEventListener("click", evt => {
     analysisResult.classList.add("visible");
     showLoadingSpinner();
 
-    postRequest("/analyse_sentiment", {text: textField.value})
+    Client.postRequest("/analyse_sentiment", {text: textField.value})
         .then(res => {
             let analysisContent = adjustAnalysisContent(res);
 
             analysisResult.appendChild(analysisContent);
         })
         .then(() => {
-            postRequest("/analyse_entities", {text: textField.value})
+            Client.postRequest("/analyse_entities", {text: textField.value})
                 .then(res => {
                     let analysisContent = adjustAnalysisContent(res);
                     analysisResult.removeChild(loader);
@@ -76,6 +63,19 @@ submitText.addEventListener("click", evt => {
         })
 })
 
+combinedSubmitText.addEventListener("click", evt => {
+    analysisContent.innerHTML = "";
+    analysisResult.classList.add("visible");
+    showLoadingSpinner();
+
+    Client.postRequest("/analyse_combined", {text: textField.value})
+        .then(res => {
+            let analysisContent = adjustAnalysisContent(res);
+
+            analysisResult.removeChild(loader);
+            analysisResult.appendChild(analysisContent);
+        })
+})
 
 clearText.addEventListener("click", evt => {
     textField.value = "";
