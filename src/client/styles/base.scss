@@ -1,6 +1,4 @@
-$main-font: 'Rubik', sans-serif;
-$main-background: #f0f0f0;
-$main-border-radius: 10px;
+@import "global.scss";
 
 body {
   font-family: $main-font;
@@ -43,111 +41,6 @@ body {
   }
 }
 
-.button_panel {
-  display: flex;
-  justify-content: space-between;
-
-  button {
-    margin-top: 1em;
-    height: 2em;
-    padding: 0 1em;
-    background: #00a4eb;
-    border: none;
-    border-radius: $main-border-radius;
-    color: #f7f7f7;
-    font-weight: 600;
-    font-size: 0.9em;
-
-    &:hover {
-      background: #0092d2;
-      cursor: pointer;
-    }
-  }
-}
-
-.analysis_result {
-  position: relative;
-
-  &.visible {
-    background: #f2f4f7;
-    border-top: 1px solid #d3dae0;
-    padding: 1em;
-    border-bottom-left-radius: $main-border-radius;
-    border-bottom-right-radius: $main-border-radius;
-  }
-
-  .analysis_content {
-    padding: 1em;
-    font-style: italic;
-    background: #fff;
-    border-radius: $main-border-radius;
-    border: 1px solid #d3dae0;
-    text-transform: capitalize;
-
-    .analysis_estimation {
-      display: flex;
-      flex-direction: row;
-      border-bottom: 1px solid #a9acb1;
-      padding-top: 1em;
-      padding-bottom: 1em;
-
-      .analysis_type {
-        font-weight: 800;
-
-        &:after {
-          margin: 0 1em;
-          content: "-";
-        }
-      }
-
-      .analysis_type_value {
-        font-weight: 400;
-      }
-
-      &:first-child {
-        padding-top: 0;
-      }
-
-      &:last-child {
-        border: none;
-        padding-bottom: 0;
-      }
-    }
-  }
-}
-
-.loader_spinner {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: -28px;
-  margin-left: -28px;
-
-  &:after {
-    content: " ";
-    display: block;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    border: 8px solid;
-    border-color: #00a4eb transparent #00a4eb transparent;
-    animation: loader_spinner_anim 1.2s linear infinite;
-  }
-
-  @keyframes loader_spinner_anim {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-}
-
-
 @media(max-resolution: 120dpi) {
   body {
     font-size: 16px;
@@ -156,17 +49,5 @@ body {
   .top_container {
     width: 80%;
     max-width: 700px;
-  }
-
-  .loader_spinner {
-    margin-left: -14px;
-    margin-top: -14px;
-
-    &:after {
-      width: 20px;
-      height: 20px;
-      border: 4px solid;
-      border-color: #00a4eb transparent #00a4eb transparent;
-    }
   }
 }
