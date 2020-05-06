@@ -1,5 +1,4 @@
 const postRequest = async function (url, load) {
-
     const response = await fetch(url, {
         method: "POST",
         mode: "cors",
@@ -13,6 +12,7 @@ const postRequest = async function (url, load) {
 
     return await response.json();
 }
+
 
 export {
     postRequest
