@@ -4,15 +4,11 @@ let textapi = new AYLIENTextAPI({
     application_key: process.env.API_KEY
 });
 
-exports.combinedAnalysis = function(text, callback) {
-    textapi.combined({
-        text: text,
-        endpoint: ["entities", "classify", "sentiment"]
-    }, function(err, result) {
+exports.combinedAnalysis = function (requestPayload, callback) {
+    textapi.combined(requestPayload, function (err, result) {
         let res = {};
         if (err === null) {
             result.results.forEach(r => {
-
                 if (r.endpoint === "entities") {
                     const entities = r.result.entities;
                     Object.keys(entities)
@@ -24,8 +20,12 @@ exports.combinedAnalysis = function(text, callback) {
 
                     Object.keys(categories)
                         .forEach(key => {
-                            res[key] = categories[key].join(", ");
+                            res[`category${key}`] = categories[key].label;
                         })
+                } else if (r.endpoint === "summarize") {
+                    if (r.result.sentences.length > 0) {
+                        res["summary"] = r.result.sentences.join("\n");
+                    }
                 } else {
                     res["polarity"] = r.result.polarity;
                     res["subjectivity"] = r.result.subjectivity;
@@ -41,10 +41,8 @@ exports.combinedAnalysis = function(text, callback) {
     });
 
 }
-exports.sentimentAnalysis = function (text, callback) {
-    textapi.sentiment({
-        text: text
-    }, function (error, response) {
+exports.sentimentAnalysis = function (requestPayload, callback) {
+    textapi.sentiment(requestPayload, function (error, response) {
         let res = {};
         if (error === null) {
             res = {
@@ -61,10 +59,8 @@ exports.sentimentAnalysis = function (text, callback) {
     });
 }
 
-exports.entitiesAnalysis = function (text, callback) {
-    textapi.entities({
-        text: text
-    }, function (error, response) {
+exports.entitiesAnalysis = function (requestPayload, callback) {
+    textapi.entities(requestPayload, function (error, response) {
         let res = {};
         if (error === null) {
             const entities = response.entities;

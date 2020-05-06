@@ -43,12 +43,25 @@ function adjustAnalysisContent(res) {
     return analysisContent;
 }
 
+function compilePayload() {
+    let text = textField.value;
+    if (Client.validUrl(text)) {
+        return {
+            url: text
+        }
+    } else {
+        return {
+            text: text
+        }
+    }
+}
+
 submitText.addEventListener("click", evt => {
     analysisContent.innerHTML = "";
     analysisResult.classList.add("visible");
     showLoadingSpinner();
 
-    Client.postRequest("/analyse_sentiment", {text: textField.value})
+    Client.postRequest("/analyse_sentiment", compilePayload())
         .then(res => {
             let analysisContent = adjustAnalysisContent(res);
 

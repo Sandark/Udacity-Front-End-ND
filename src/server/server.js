@@ -25,30 +25,42 @@ app.get("/", (req, res) => {
 });
 
 app.post("/analyse_sentiment", (req, res) => {
-    const text = req.body.text;
-    const url = req.body.url;
+    const requestPayload = extractPayload(req.body);
 
-    textAnalyzer.sentimentAnalysis(text, (results) => {
+    textAnalyzer.sentimentAnalysis(requestPayload, (results) => {
         res.json(results)
     });
 
 });
 
 app.post("/analyse_entities", (req, res) => {
-    const text = req.body.text;
-    const url = req.body.url;
+    const requestPayload = extractPayload(req.body);
 
-    textAnalyzer.entitiesAnalysis(text, (results) => {
+
+    textAnalyzer.entitiesAnalysis(requestPayload, (results) => {
         res.json(results)
     });
 });
 
 app.post("/analyse_combined", (req, res) => {
-    const text = req.body.text;
-    const url = req.body.url;
+    const requestPayload = extractPayload(req.body);
 
-    textAnalyzer.combinedAnalysis(text, (results) => {
+    requestPayload["endpoint"] = ["entities", "classify", "sentiment", "summarize"]
+
+    textAnalyzer.combinedAnalysis(requestPayload, (results) => {
         res.json(results)
     });
 
 });
+
+function extractPayload(body) {
+    if (body.text !== undefined) {
+        return {
+            text: body.text
+        }
+    } else if (body.url !== undefined) {
+        return {
+            url: body.url
+        }
+    }
+}
