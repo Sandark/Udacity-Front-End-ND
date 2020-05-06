@@ -31,12 +31,30 @@ function showLoadingSpinner() {
 }
 
 function createAnalysisContent(res) {
-    analysisContent.textContent = "";
-    if (res.error === null || res.error === undefined) {
-        analysisContent.textContent = `${res.polarity} and ${res.subjectivity}`;
-    } else {
-        analysisContent.textContent = `${res.error}`;
-    }
+    analysisContent.innerHTML = "";
+
+    const tempFragment = document.createDocumentFragment();
+
+    Object.keys(res).forEach(key => {
+        const estimation = document.createElement("div");
+        estimation.classList.add("analysis_estimation");
+
+        const estimationType = document.createElement("div");
+        estimationType.classList.add("analysis_type");
+        estimationType.textContent = key;
+
+        const estimationValue = document.createElement("div");
+        estimationValue.classList.add("analysis_type_value");
+        estimationValue.textContent = res[key];
+
+        estimation.appendChild(estimationType);
+        estimation.appendChild(estimationValue);
+
+        tempFragment.appendChild(estimation);
+    })
+
+    analysisContent.appendChild(tempFragment);
+
     return analysisContent;
 }
 

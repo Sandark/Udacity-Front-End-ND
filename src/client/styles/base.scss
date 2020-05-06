@@ -1,5 +1,6 @@
 $main-font: 'Rubik', sans-serif;
-$main-background: #f7f7f7;
+$main-background: #f0f0f0;
+$main-border-radius: 10px;
 
 body {
   font-family: $main-font;
@@ -10,13 +11,14 @@ body {
   font-size: 64px;
 }
 
-.container {
+.top_container {
   display: flex;
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 2em;
   background: #fff;
-  border-radius: 10px;
+  border-radius: $main-border-radius;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
   width: 100%;
 }
@@ -29,7 +31,7 @@ body {
   #target-text {
     padding: 1em;
     margin-top: 1em;
-    border-radius: 1em;
+    border-radius: $main-border-radius;
     border: 1px solid #d3dae0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
     font: inherit;
@@ -51,7 +53,7 @@ body {
     padding: 0 1em;
     background: #00a4eb;
     border: none;
-    border-radius: 1em;
+    border-radius: $main-border-radius;
     color: #f7f7f7;
     font-weight: 600;
     font-size: 0.9em;
@@ -69,11 +71,47 @@ body {
     background: #f2f4f7;
     border-top: 1px solid #d3dae0;
     padding: 1em;
+    border-bottom-left-radius: $main-border-radius;
+    border-bottom-right-radius: $main-border-radius;
   }
 
   .analysis_content {
     padding: 1em;
     font-style: italic;
+    background: #fff;
+    border-radius: $main-border-radius;
+    border: 1px solid #d3dae0;
+    text-transform: capitalize;
+
+    .analysis_estimation {
+      display: flex;
+      flex-direction: row;
+      border-bottom: 1px solid #a9acb1;
+      padding-top: 1em;
+      padding-bottom: 1em;
+
+      .analysis_type {
+        font-weight: 800;
+
+        &:after {
+          margin: 0 1em;
+          content: "-";
+        }
+      }
+
+      .analysis_type_value {
+        font-weight: 400;
+      }
+
+      &:first-child {
+        padding-top: 0;
+      }
+
+      &:last-child {
+        border: none;
+        padding-bottom: 0;
+      }
+    }
   }
 }
 
@@ -109,7 +147,7 @@ body {
     font-size: 16px;
   }
 
-  .container {
+  .top_container {
     width: 80%;
     max-width: 700px;
   }
