@@ -6,7 +6,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   background: $main-background;
-  font-size: 64px;
+  font-size: 32px;
 }
 
 .top_container {
@@ -19,6 +19,7 @@ body {
   border-radius: $main-border-radius;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
   width: 100%;
+  min-width: 400px;
 }
 
 .text_entry {

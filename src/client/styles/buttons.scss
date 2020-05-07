@@ -3,6 +3,7 @@
 .button_panel {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
 
   button {
     margin-top: 1em;
@@ -19,5 +20,11 @@
       background: $active-element-color-hover;
       cursor: pointer;
     }
+  }
+}
+
+@media(max-resolution: 120dpi) and (min-width: 600px) {
+  .button_panel {
+    flex-direction: row;
   }
 }

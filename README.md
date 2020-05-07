@@ -1,6 +1,6 @@
 # Natural Language Processor
 
-NLP project allows analyzing texts and articles (also via url) to give insights about entities, contexts, keywords, summary etc. of the given article.
+NLP project allows analyzing texts and articles (also via url) to give insights about entities, contexts, keywords, summary etc. of the given article. External API from Aylien is used.
 
 # Technical details
 
