@@ -8,7 +8,7 @@
     margin-top: 1em;
     height: 2em;
     padding: 0 1em;
-    background: #00a4eb;
+    background: $active-element-color;
     border: none;
     border-radius: $main-border-radius;
     color: #f7f7f7;
@@ -16,7 +16,7 @@
     font-size: 0.9em;
 
     &:hover {
-      background: #0092d2;
+      background: $active-element-color-hover;
       cursor: pointer;
     }
   }

@@ -69,20 +69,21 @@ function prepareUiForLoading() {
 submitText.addEventListener("click", evt => {
     if (isInputInvalid()) {
         textField.classList.add("error");
-        return;
     } else {
         textField.classList.remove("error");
 
         prepareUiForLoading();
 
-        Client.postRequest("/analyse_sentiment", compilePayload())
+        const payload = compilePayload();
+
+        Client.postRequest("/analyse_sentiment", payload)
             .then(res => {
                 let analysisContent = adjustAnalysisContent(res);
 
                 analysisResult.appendChild(analysisContent);
             })
             .then(() => {
-                Client.postRequest("/analyse_entities", {text: textField.value})
+                Client.postRequest("/analyse_entities", payload)
                     .then(res => {
                         let analysisContent = adjustAnalysisContent(res);
                         analysisResult.removeChild(loader);
@@ -94,13 +95,12 @@ submitText.addEventListener("click", evt => {
 combinedSubmitText.addEventListener("click", evt => {
     if (isInputInvalid()) {
         textField.classList.add("error");
-        return;
     } else {
         textField.classList.remove("error");
 
         prepareUiForLoading();
 
-        Client.postRequest("/analyse_combined", {text: textField.value})
+        Client.postRequest("/analyse_combined", compilePayload())
             .then(res => {
                 let analysisContent = adjustAnalysisContent(res);
 
