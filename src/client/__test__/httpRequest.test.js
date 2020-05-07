@@ -21,7 +21,7 @@ test('Post request returns proper result', async () => {
     expect(global.fetch).toHaveBeenCalledWith("/", expect.any(Object));
 })
 
-test('Post unhappy path', async () => {
+test('Post request unhappy path', async () => {
 
     const mockFetchPromise = Promise.reject(new Error("404"));
     global.fetch = jest.fn().mockImplementation(() => mockFetchPromise);

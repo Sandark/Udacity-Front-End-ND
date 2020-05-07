@@ -41,7 +41,7 @@ function adjustAnalysisContent(res) {
     analysisContent.appendChild(tempFragment);
 
     return analysisContent;
-}
+};
 
 function compilePayload() {
     let text = textField.value;
@@ -115,3 +115,7 @@ clearText.addEventListener("click", evt => {
     analysisResult.classList.remove("visible");
     analysisResult.innerHTML = "";
 })
+
+export {
+    isInputInvalid
+}
