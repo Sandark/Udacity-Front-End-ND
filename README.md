@@ -2,6 +2,10 @@
 
 NLP project allows analyzing texts and articles (also via url) to give insights about entities, contexts, keywords, summary etc. of the given article. External API from Aylien is used.
 
+It works very simple - user enters article or url of an article he would like to analyze. Two buttons provide similar results but different ways: Submit button subsequently calls 2 REST APIs so user sees the results as soon as first returns the response. The second button - Combined submit - calls API using one REST endpoint in which specified what kind of analysis is required. It migth take more time to get the response with combined call.
+
+Clear button - clean the text and results.
+
 # Technical details
 
 Project is built using Webpack and based on nodejs+express server.
@@ -38,4 +42,4 @@ Using callbacks results of analysis are passed as response for post request of t
 Client is written on HTML5+CSS3(SASS)+ES6 JS. Using webpack JS is compiled in backward compatible version of JS.
 
 ### Tests
-Tests are written using JEST and can be found in `src/client/test` folder. Examples of simple Unit tests are provided (including mocking of external calls like `fetch()`).
+Tests are written using JEST and can be found in `src/client/__test__` folder. Examples of simple Unit tests are provided (including mocking of external calls like `fetch()`).
