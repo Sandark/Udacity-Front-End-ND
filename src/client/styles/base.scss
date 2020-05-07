@@ -33,6 +33,11 @@ body {
     border: 1px solid #d3dae0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
     font: inherit;
+
+    &.error {
+      border: 1px solid #ff0000;
+      box-shadow: 0 0 10px rgba(1, 0, 0, 0.5);
+    }
   }
 
   label {

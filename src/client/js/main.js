@@ -56,38 +56,58 @@ function compilePayload() {
     }
 }
 
-submitText.addEventListener("click", evt => {
+function isInputInvalid() {
+    return textField.value.length <= 0;
+}
+
+function prepareUiForLoading() {
     analysisContent.innerHTML = "";
     analysisResult.classList.add("visible");
     showLoadingSpinner();
+}
 
-    Client.postRequest("/analyse_sentiment", compilePayload())
-        .then(res => {
-            let analysisContent = adjustAnalysisContent(res);
+submitText.addEventListener("click", evt => {
+    if (isInputInvalid()) {
+        textField.classList.add("error");
+        return;
+    } else {
+        textField.classList.remove("error");
 
-            analysisResult.appendChild(analysisContent);
-        })
-        .then(() => {
-            Client.postRequest("/analyse_entities", {text: textField.value})
-                .then(res => {
-                    let analysisContent = adjustAnalysisContent(res);
-                    analysisResult.removeChild(loader);
-                })
-        })
+        prepareUiForLoading();
+
+        Client.postRequest("/analyse_sentiment", compilePayload())
+            .then(res => {
+                let analysisContent = adjustAnalysisContent(res);
+
+                analysisResult.appendChild(analysisContent);
+            })
+            .then(() => {
+                Client.postRequest("/analyse_entities", {text: textField.value})
+                    .then(res => {
+                        let analysisContent = adjustAnalysisContent(res);
+                        analysisResult.removeChild(loader);
+                    })
+            })
+    }
 })
 
 combinedSubmitText.addEventListener("click", evt => {
-    analysisContent.innerHTML = "";
-    analysisResult.classList.add("visible");
-    showLoadingSpinner();
+    if (isInputInvalid()) {
+        textField.classList.add("error");
+        return;
+    } else {
+        textField.classList.remove("error");
 
-    Client.postRequest("/analyse_combined", {text: textField.value})
-        .then(res => {
-            let analysisContent = adjustAnalysisContent(res);
+        prepareUiForLoading();
 
-            analysisResult.removeChild(loader);
-            analysisResult.appendChild(analysisContent);
-        })
+        Client.postRequest("/analyse_combined", {text: textField.value})
+            .then(res => {
+                let analysisContent = adjustAnalysisContent(res);
+
+                analysisResult.removeChild(loader);
+                analysisResult.appendChild(analysisContent);
+            })
+    }
 })
 
 clearText.addEventListener("click", evt => {
