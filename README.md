@@ -16,6 +16,8 @@ After checking out project make `npm install` and `npm build-dev`
 
 ## Nodejs+Express
 
+Server is built on Nodejs + Express (+Compression).
+
 Server is responsible for handling requests from the client and calling Aylien API to perform article analysis.
 
 Main entry point for server `/src/server/server.js`. It has additional `aylienApi.js` script that is working as adapter for provided SDK. Server port is either taken from Env variable PORT (useful for deploy on Heroku) or 8080.
@@ -44,4 +46,4 @@ Using callbacks results of analysis are passed as response for post request of t
 Client is written on HTML5+CSS3(SASS)+ES6 JS. Using webpack JS is compiled in backward compatible version of JS.
 
 ### Tests
-Tests are written using JEST and can be found in `src/client/__test__` folder. Examples of simple Unit tests are provided (including mocking of external calls like `fetch()`).
+Tests are written using JEST and can be found in `src/client/__test__` folder. Examples of simple Unit tests are provided (including mocking of external calls like `fetch()` or working with the DOM).
