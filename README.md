@@ -2,6 +2,8 @@
 
 NLP project allows analyzing texts and articles (also via url) to give insights about entities, contexts, keywords, summary etc. of the given article. External API from Aylien is used.
 
+Page is running on heroku - https://sandark-nlp.herokuapp.com/
+
 It works very simple - user enters article or url of an article he would like to analyze. Two buttons provide similar results but different ways: Submit button subsequently calls 2 REST APIs so user sees the results as soon as first returns the response. The second button - Combined submit - calls API using one REST endpoint in which specified what kind of analysis is required. It migth take more time to get the response with combined call.
 
 Clear button - clean the text and results.
