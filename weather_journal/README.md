@@ -2,6 +2,9 @@
 
 A small web page to get familiar with Node.js, express, and async JS.
 
+## Before launch
+Run `npm install` to download dependencies and then `npm run start` to start the server.
+
 ## Functionality
 * By selecting ZipCode (only US) we can retrieve current temperature that will be used for storing our record on the server
 * ZipCode and Feelings fields are validated to have at least some characters inside, otherwise, they will be colored by a red border
