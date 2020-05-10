@@ -17,3 +17,5 @@ Nodejs+Express based project to work with external API (openweather) and storing
 Web project to get familiar with development tools like Webpack to simplify project build and deployment.
 
 Backend is written on nodejs+express. Aylien API is used to process provided articles or links. Client side communicates with server through REST API.
+
+Resides in `nlp` branch.
