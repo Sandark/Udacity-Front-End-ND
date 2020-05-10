@@ -2,6 +2,8 @@
 
 Additional information in Readme.md is in the respective project directories.
 
+Updated links can be found in https://sandark.github.io/Udacity-Front-End-ND/.
+
 ## Personal blog
 Simple HTML+CSS only blog consisted of 4 linked pages. Personal blog in branch `personal-blog`.
 
