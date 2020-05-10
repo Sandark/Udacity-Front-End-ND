@@ -1,0 +1,65 @@
+/* Styling for results from server */
+@import "global";
+
+.analysis_result {
+  position: relative;
+
+  &.visible {
+    background: #f2f4f7;
+    border-top: 1px solid #d3dae0;
+    padding: 1em;
+    border-bottom-left-radius: $main-border-radius;
+    border-bottom-right-radius: $main-border-radius;
+  }
+
+  .analysis_content {
+    padding: 1em;
+    font-style: italic;
+    background: #fff;
+    border-radius: $main-border-radius;
+    border: 2px solid #d3dae0;
+
+    .analysis_estimation {
+      display: flex;
+      flex-direction: row;
+      border-bottom: 2px solid #a9acb1;
+      padding-top: 1em;
+      padding-bottom: 1em;
+
+      .analysis_type {
+        font-weight: 800;
+        text-transform: capitalize;
+
+        &:after {
+          margin: 0 1em;
+          content: "-";
+        }
+      }
+
+      .analysis_type_value {
+        font-weight: 400;
+      }
+
+      &:first-child {
+        padding-top: 0;
+      }
+
+      &:last-child {
+        border: none;
+        padding-bottom: 0;
+      }
+    }
+  }
+}
+
+@media(max-resolution: 120dpi) {
+  .analysis_result {
+    .analysis_content {
+      border: 1px solid #d3dae0;
+
+      .analysis_estimation {
+        border-bottom: 1px solid #a9acb1;
+      }
+    }
+  }
+}

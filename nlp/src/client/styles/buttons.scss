@@ -1,0 +1,30 @@
+@import "global";
+
+.button_panel {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  button {
+    margin-top: 1em;
+    height: 2em;
+    padding: 0 1em;
+    background: $active-element-color;
+    border: none;
+    border-radius: $main-border-radius;
+    color: #f7f7f7;
+    font-weight: 600;
+    font-size: 0.9em;
+
+    &:hover {
+      background: $active-element-color-hover;
+      cursor: pointer;
+    }
+  }
+}
+
+@media(max-resolution: 120dpi) and (min-width: 600px) {
+  .button_panel {
+    flex-direction: row;
+  }
+}

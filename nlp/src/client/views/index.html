@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Natural Language Processing</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="top_container">
+    <div class="text_entry">
+        <label for="target-text">Text for analysis:</label>
+        <textarea id="target-text" rows="10"></textarea>
+        <div class="button_panel">
+            <button type="button" id="submit-text">Submit</button>
+            <button type="button" id="combined-submit-text">Combined Submit</button>
+            <button type="button" id="clear-text">Clear</button>
+        </div>
+    </div>
+    <div class="analysis_result"></div>
+</div>
+
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener("load", () => {
+            navigator.serviceWorker.register("/service-worker.js");
+        })
+
+        self.addEventListener("fetch", () => {
+            alert("Page is offline");
+        })
+    }
+</script>
+</body>
+</html>

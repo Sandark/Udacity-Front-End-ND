@@ -1,3 +1,6 @@
+/.idea/
+*.iml
+/.env
 # Logs
 logs
 *.log
@@ -114,6 +117,3 @@ dist
 .yarn/unplugged
 .yarn/build-state.yml
 .pnp.*
-
-*.iml
-/.idea/
