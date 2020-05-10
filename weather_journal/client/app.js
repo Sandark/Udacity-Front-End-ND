@@ -2,7 +2,7 @@
 const units = document.body.querySelector("#units");
 const baseUrl = `https://api.openweathermap.org/data/2.5/weather?`;
 /* Not safe at all */
-const openWeatherKey = "04c60bccffd3b2b9027ec925a725206a";
+const openWeatherKey = "";
 
 /* Fields to be used */
 const zipCodeField = document.body.querySelector("#zip");
