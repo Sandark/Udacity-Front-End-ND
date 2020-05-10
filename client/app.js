@@ -1,8 +1,5 @@
 /* Openweather API constants */
 const units = document.body.querySelector("#units");
-const baseUrl = `https://api.openweathermap.org/data/2.5/weather?`;
-/* Not safe at all */
-const openWeatherKey = "04c60bccffd3b2b9027ec925a725206a";
 
 /* Fields to be used */
 const zipCodeField = document.body.querySelector("#zip");
@@ -15,7 +12,10 @@ const recordTemp = document.body.querySelector("#temp");
 const recordFeelings = document.body.querySelector("#content");
 
 /* Base for using HTTP GET and POST requests */
-const getData = async (url = "") => {
+const getData = async (url = "", data = {}) => {
+    url += "?";
+    Object.keys(data).forEach(key => url += `&${key}=${data[key]}`);
+
     const response = await fetch(url);
 
     try {
@@ -43,23 +43,14 @@ const postData = async (url = "", data = {}) => {
     }
 }
 
-/* Compile URL according to documentation of fetch() */
-const compileUrl = function (params) {
-    let url = new URL(baseUrl);
-
-    Object.keys(params).forEach(key => url.searchParams.append(key, params[key]))
-    return url;
-}
-
 generateButton.addEventListener("click", () => {
     if (isInputValid()) {
         zipCodeField.classList.remove("error");
 
-        getData(compileUrl({
+        getData("/weather", {
             zip: zipCodeField.value,
-            units: units.options[units.selectedIndex].value,
-            appid: openWeatherKey
-        }))
+            units: units.options[units.selectedIndex].value
+        })
             .then(value => {
                 if (value.cod === 200) {
                     currentTemperature.textContent = `${value.main.temp}° ${units.options[units.selectedIndex].getAttribute("data-sign")}`;
