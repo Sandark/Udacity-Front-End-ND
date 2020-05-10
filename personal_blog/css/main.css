@@ -1,8 +1,8 @@
 /* importing another css files */
-@import "./blogpost_preview.css";
-@import "./galery.css";
-@import "./blogpost_full.css";
-@import "./title.css";
+@import "blogpost_preview.css";
+@import "galery.css";
+@import "blogpost_full.css";
+@import "title.css";
 
 body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
