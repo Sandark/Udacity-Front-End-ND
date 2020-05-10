@@ -1,5 +1,7 @@
 # Projects build during Udacity Front-End ND
 
+Additional information in Readme.md is in the respective project directories.
+
 ## Personal blog
 Simple HTML+CSS only blog consisted of 4 linked pages. Personal blog in branch `personal-blog`.
 
